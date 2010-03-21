@@ -1,0 +1,19 @@
+    <h1>Posts</h1>
+    {.section posts} 
+      {.repeated section @}
+        <h2><a href="/posts?show={id}">{title}</a></h2>
+	<p>{body}</p>
+	<hr />
+      {.end}
+    {.or}
+      <h2>No posts found</h2>
+    {.end}
+
+    <h1>Write a post</h1>
+    <form action="/posts" method="post">
+      Title<br />
+      <input type="text" name="title" /><br />
+      Text<br />
+      <textarea name="body"></textarea><br />
+      <input type="submit" value="Post" />
+    </form>

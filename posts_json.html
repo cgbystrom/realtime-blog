@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/json-template.js"></script>
+    <title>My best blog</title>
+  </head>
+  <body>
+    {content}
+  </body>
+  <script type="text/javascript">
+    var template = null;
+    $.get('/static/posts_partial.html', function (tdata) {
+       template = jsontemplate.Template(tdata);
+    });
+
+    function listen() {
+      $.get('/longpoll', function (data) {
+        var json = eval('(' + data + ')');
+        $('body').html(template.expand(json));
+        listen();
+      });
+    }
+    setTimeout(listen, 500);
+  </script>
+</html>

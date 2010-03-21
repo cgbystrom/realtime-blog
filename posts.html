@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>My best blog</title>
+  </head>
+  <body>
+      <h1>Posts</h1>
+      {% for post in posts %}
+        <h2><a href="/posts?show={{post.id}}">{{post.title}}</a></h2>
+	<p>{{post.body}}</p>
+	<hr />
+      {% end %}
+
+    <h1>Write a post</h1>
+    <form action="/posts" method="post">
+      Title<br />
+      <input type="text" name="title" /><br />
+      Text<br />
+      <textarea name="body"></textarea><br />
+      <input type="submit" value="Post" />
+    </form>
+  </body>
+</html>
