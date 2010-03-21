@@ -1,0 +1,6 @@
+A simple blog with that can render templates both server-side and client-side.
+
+Bolted together with Tornado for long-poll support.
+
+Point browser A to http://localhost:8888/posts and browser B to http://127.0.0.1:8888/posts
+When posting a message in either browser, a new post should appear in the other browser (rendered client-side by the browser).
